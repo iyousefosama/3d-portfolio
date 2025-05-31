@@ -9,7 +9,7 @@ html,
 body {
     width: 100dvw;
     overflow-x: hidden;
-    background-color: #0c0c0c;
+    @apply bg-black;
     color: white;
     scroll-behavior: smooth;
     font-family: "Mona Sans", sans-serif;
@@ -349,35 +349,27 @@ will make it translte from blue to orange to red then rebeat
 @keyframes wordSlider {
     0% {
         transform: translateY(0.5%);
-        color: #62e0ff;
     }
     12.5% {
         transform: translateY(-12.5%);
-        color: #52aeff;
     }
     25% {
         transform: translateY(-25%);
-        color: #ffcc5c;
     }
     37.5% {
         transform: translateY(-37.5%);
-        color: #fd5c79;
     }
     50% {
         transform: translateY(-50%);
-        color: #6d45ce;
     }
     62.5% {
         transform: translateY(-62.5%);
-        color: #88d8b0;
     }
     75% {
         transform: translateY(-75%);
-        color: #ff6f69;
     }
     87.5% {
         transform: translateY(-87.5%);
-        color: #ffeead;
     }
 }
 

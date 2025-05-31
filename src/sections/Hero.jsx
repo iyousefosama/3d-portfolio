@@ -2,10 +2,23 @@ import React from 'react';
 import { words } from "../../constants";
 import Button from "../components/Button.jsx";
 import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import AnimatedCounters from "../components/AnimatedCounters.jsx";
 
 function Hero() {
-    let num = 0;
-
+    useGSAP(() => {
+        gsap.fromTo(".hero-text h1", {
+            opacity: 0,
+            y: 50,
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power2.out",
+        });
+    })
     return (
         <section id={"hero"} className={"relative overflow-hidden"}>
             <div className={"absolute top-0 left-0 z-10"}>
@@ -21,10 +34,10 @@ function Hero() {
                                 Shaping
                                 <span className={"slide"}>
                                     <span className={"wrapper"}>
-                                        {words.map(word => (
-                                            <span className={"flex items-center gap-1 md:gap-3 pb-2"} key={word.text + num++}>
-                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-white-50"}/>
-                                                <span className={"text"}>{word.text}</span>
+                                        {words.map((word, key) => (
+                                            <span className={"flex items-center gap-1 md:gap-3 pb-2"} key={key}>
+                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-cyan-100"}/>
+                                                <span className={"text text-cyan-100"}>{word.text}</span>
                                             </span>
                                         ))}
                                     </span>
@@ -40,7 +53,7 @@ function Hero() {
                         <p className={"relative z-10 pointer-events-none text-white-50 md:text-xl"}>
                             Hello, I'm yousef, a developer based in Egypt with a passion for javascript!
                         </p>
-                        <Button text={"See my work"} className={"w-60 h-12 md:w-80 h-16"} id={"button"} />
+                        <Button text={"Work section"} className={"w-60 h-12 md:w-80 md:h-16"} id={"button"} />
                     </div>
                 </header>
                 {/* Right: Hero 3D model */}
@@ -50,6 +63,7 @@ function Hero() {
                     </div>
                 </figure>
             </div>
+            <AnimatedCounters />
         </section>
     );
 }
