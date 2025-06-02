@@ -1,7 +1,7 @@
-import {counterItems} from "../../constants/index.js";
+import { counterItems } from "../../constants/index";
 import CountUp from "react-countup";
 
-const AnimatedCounters = () => (
+const AnimatedCounters: React.FC = () => (
     <div id={"counters"} className={"padding-x-lg mt-32 lg:mt-0"}>
         <div className={"mx-auto grid-4-cols"}>
             {counterItems.map((item, key) => (
@@ -18,4 +18,4 @@ const AnimatedCounters = () => (
     </div>
 );
 
-export default AnimatedCounters;
+export default AnimatedCounters; 

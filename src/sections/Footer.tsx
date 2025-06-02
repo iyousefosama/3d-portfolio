@@ -1,6 +1,6 @@
-import { social } from "../../constants";
+import { social } from "../../constants/index";
 
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -11,7 +11,7 @@ const Footer = () => {
                 </div>
                 <div className="socials">
                     {social.map((social, index) => (
-                        <a key={index} className="icon" href={social.link} target="_blank">
+                        <a key={index} className="icon" href={social.link} target="_blank" rel="noopener noreferrer">
                             <img src={social.imgPath} alt={social.name} />
                         </a>
                     ))}
@@ -26,4 +26,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default Footer; 

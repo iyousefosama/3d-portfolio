@@ -1,12 +1,12 @@
 import React from 'react';
-import { words } from "../../constants";
-import Button from "../components/Button.jsx";
-import HeroExperience from "../components/Models/HeroModels/HeroExperience.jsx";
+import { words } from "../../constants/index";
+import Button from "../components/Button";
+import HeroExperience from "../components/Models/HeroModels/HeroExperience";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import AnimatedCounters from "../components/AnimatedCounters.jsx";
+import AnimatedCounters from "../components/AnimatedCounters";
 
-function Hero() {
+const Hero: React.FC = () => {
     useGSAP(() => {
         gsap.fromTo(".hero-text h1", {
             opacity: 0,
@@ -18,14 +18,10 @@ function Hero() {
             stagger: 0.2,
             ease: "power2.out",
         });
-    })
+    });
+
     return (
         <section id={"hero"} className={"relative overflow-hidden"}>
-
-{/*            <div className={"absolute top-0 left-0 z-10"}>
-                <img src={"/images/backgrounds/bg.png"} alt={"background"} />
-            </div>*/}
-
             <div className={"hero-layout"}>
                 {/* Left: Hero content */}
                 <header className={"flex flex-col justify-center md:w-full w-screen md:px-20 px-5"}>
@@ -37,7 +33,7 @@ function Hero() {
                                     <span className={"wrapper"}>
                                         {words.map((word, key) => (
                                             <span className={"flex items-center gap-1 md:gap-3 pb-2"} key={key}>
-                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-white-50 icon-animate"}/>
+                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-white-50 icon-animate"} />
                                                 <span className={"text text-white-50 underline"}>{word.text}</span>
                                             </span>
                                         ))}
@@ -67,6 +63,6 @@ function Hero() {
             <AnimatedCounters />
         </section>
     );
-}
+};
 
-export default Hero;
+export default Hero; 

@@ -1,4 +1,58 @@
-const navLinks = [
+interface NavLink {
+  name: string;
+  link: string;
+}
+
+interface Word {
+  text: string;
+  imgPath: string;
+}
+
+interface CounterItem {
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+interface Ability {
+  imgPath: string;
+  title: string;
+  desc: string;
+}
+
+interface TechStackImg {
+  name: string;
+  imgPath: string;
+}
+
+interface TechStackIcon {
+  name: string;
+  modelPath: string;
+  scale: number;
+  rotation: [number, number, number];
+}
+
+interface ExpCard {
+  review: string;
+  imgPath: string;
+  logoPath: string;
+  title: string;
+  date: string;
+  responsibilities: string[];
+}
+
+interface Logo {
+  name: string;
+  imgPath: string;
+}
+
+interface Social {
+  name: string;
+  imgPath: string;
+  link: string;
+}
+
+const navLinks: NavLink[] = [
   {
     name: "Projects",
     link: "#projects",
@@ -13,7 +67,7 @@ const navLinks = [
   },
 ];
 
-const words = [
+const words: Word[] = [
   { text: "Ideas", imgPath: "/images/icons/ideas.svg" },
   { text: "Concepts", imgPath: "/images/icons/concepts.svg" },
   { text: "Designs", imgPath: "/images/icons/designs.svg" },
@@ -24,18 +78,18 @@ const words = [
   { text: "Code", imgPath: "/images/icons/code.svg" },
 ];
 
-const counterItems = [
+const counterItems: CounterItem[] = [
   { value: 5, suffix: "+", label: "Years of Experience" },
   { value: 20, suffix: "+", label: "Satisfied Clients" },
   { value: 50, suffix: "+", label: "Completed Projects" },
   { value: 90, suffix: "%", label: "Client Retention Rate" },
 ];
 
-const abilities = [
+const abilities: Ability[] = [
   {
     imgPath: "/images/code.png",
     title: "Clean & Efficient Code",
-    desc: "Writing well-structured, optimized code that’s easy to read and maintain.",
+    desc: "Writing well-structured, optimized code that's easy to read and maintain.",
   },
   {
     imgPath: "/images/speak.png",
@@ -49,7 +103,7 @@ const abilities = [
   },
 ];
 
-const techStackImgs = [
+const techStackImgs: TechStackImg[] = [
   { name: "Front-end Developer", imgPath: "/images/logos/react.png" },
   { name: "Backend Developer", imgPath: "/images/logos/node.png" },
   { name: "Python Developer", imgPath: "/images/logos/python.svg" },
@@ -57,7 +111,7 @@ const techStackImgs = [
   { name: "Project Manager", imgPath: "/images/logos/git.svg" },
 ];
 
-const techStackIcons = [
+const techStackIcons: TechStackIcon[] = [
   {
     name: "Front-end Developer",
     modelPath: "/models/tech/react_logo-transformed.glb",
@@ -90,7 +144,7 @@ const techStackIcons = [
   },
 ];
 
-const expCards = [
+const expCards: ExpCard[] = [
   {
     review: "Yousef osama created a clean and powerful dashboard for managing Discord servers. His attention to detail and user-focused design really makes things easy to use.",
     imgPath: "/images/logos/wolfy.jpg",
@@ -104,7 +158,7 @@ const expCards = [
     ],
   },
   {
-    review: "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It’s fast, clean, and shows a great understanding of full-stack concepts.",
+    review: "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It's fast, clean, and shows a great understanding of full-stack concepts.",
     imgPath: "/images/logos/tomados-logo.png",
     logoPath: "/images/logos/node.png",
     title: "Full Stack Developer – Tomados Todos App",
@@ -116,7 +170,7 @@ const expCards = [
     ],
   },
   {
-    review: "Yousef isn’t limited to just web development — he constantly pushes himself by learning new tech stacks, building games, desktop apps, and exploring creative ideas beyond the browser.",
+    review: "Yousef isn't limited to just web development — he constantly pushes himself by learning new tech stacks, building games, desktop apps, and exploring creative ideas beyond the browser.",
     imgPath: "/images/ok.png",
     logoPath: "/images/logos/git.svg",
     title: "Versatile Developer – Games & Desktop Apps",
@@ -129,14 +183,13 @@ const expCards = [
   }
 ];
 
-
-const expLogos = [
+const expLogos: Logo[] = [
   { name: "logo1", imgPath: "/images/logos/logo1.png" },
   { name: "logo2", imgPath: "/images/logos/logo2.png" },
   { name: "logo3", imgPath: "/images/logos/logo3.png" },
 ];
 
-const social = [
+const social: Social[] = [
   {
     name: "insta",
     imgPath: "/images/social/insta.png",
@@ -164,5 +217,4 @@ export {
   techStackIcons,
   techStackImgs,
   navLinks,
-};
-
+}; 

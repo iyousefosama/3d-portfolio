@@ -5,11 +5,11 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Showcase = () => {
-  const sectionRef = useRef(null);
-  const project1Ref = useRef(null);
-  const project2Ref = useRef(null);
-  const project3Ref = useRef(null);
+const Showcase: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const project1Ref = useRef<HTMLDivElement>(null);
+  const project2Ref = useRef<HTMLDivElement>(null);
+  const project3Ref = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const projects = [
@@ -19,6 +19,8 @@ const Showcase = () => {
     ];
 
     projects.forEach((project, index) => {
+      if (!project) return;
+      
       gsap.fromTo(
         project,
         {
@@ -29,7 +31,7 @@ const Showcase = () => {
           opacity: 1,
           y: 0,
           duration: 1,
-          delay: 0.3*(index + 1),
+          delay: 0.3 * (index + 1),
           scrollTrigger: {
             trigger: project,
             start: "top bottom-=100",
@@ -37,16 +39,19 @@ const Showcase = () => {
         }
       );
     });
-    gsap.fromTo(
-      sectionRef.current,
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 1.5,
-      }
-    );
+
+    if (sectionRef.current) {
+      gsap.fromTo(
+        sectionRef.current,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 1.5,
+        }
+      );
+    }
   }, []);
 
   return (
@@ -98,4 +103,5 @@ const Showcase = () => {
     </section>
   );
 };
-export default Showcase;
+
+export default Showcase; 

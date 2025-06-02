@@ -1,6 +1,6 @@
-import { abilities } from "../../constants";
+import { abilities } from "../../constants/index";
 
-const FeatureCards = () => (
+const FeatureCards: React.FC = () => (
   <div className="w-full padding-x-lg">
     <div className="mx-auto grid-3-cols">
       {abilities.map(({ imgPath, title, desc }) => (
@@ -19,4 +19,4 @@ const FeatureCards = () => (
   </div>
 );
 
-export default FeatureCards;
+export default FeatureCards; 

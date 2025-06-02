@@ -3,20 +3,31 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
 import * as THREE from "three";
 
-const TechIconCardExperience = ({ model }) => {
+interface TechModel {
+    name: string;
+    modelPath: string;
+    scale: number;
+    rotation: [number, number, number];
+}
+
+interface TechIconCardExperienceProps {
+    model: TechModel;
+}
+
+const TechIconCardExperience: React.FC<TechIconCardExperienceProps> = ({ model }) => {
     const scene = useGLTF(model.modelPath);
 
     useEffect(() => {
         if (model.name === "Interactive Developer") {
             scene.scene.traverse((child) => {
-                if (child.isMesh) {
+                if (child instanceof THREE.Mesh) {
                     if (child.name === "Object_5") {
                         child.material = new THREE.MeshStandardMaterial({ color: "white" });
                     }
                 }
             });
         }
-    }, [scene]);
+    }, [scene, model.name]);
 
     return (
         <Canvas>
@@ -41,4 +52,4 @@ const TechIconCardExperience = ({ model }) => {
     );
 };
 
-export default TechIconCardExperience;
+export default TechIconCardExperience; 

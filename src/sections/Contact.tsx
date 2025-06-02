@@ -1,29 +1,36 @@
-import {useRef, useState} from "react";
+import { useRef, useState, FormEvent, ChangeEvent } from "react";
 import emailjs from "@emailjs/browser";
-
 import TitleHeader from "../components/TitleHeader";
 import Lottie from "lottie-react";
 import contactAnimation from "../assets/animations/contact.json";
 
-const Contact = () => {
-    const formRef = useRef(null);
-    const [loading, setLoading] = useState(false);
-    const [form, setForm] = useState({
+interface FormData {
+    name: string;
+    email: string;
+    message: string;
+}
+
+const Contact: React.FC = () => {
+    const formRef = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [form, setForm] = useState<FormData>({
         name: "",
         email: "",
         message: "",
     });
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setForm({...form, [name]: value});
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true); // Show loading state
 
         try {
+            if (!formRef.current) return;
+
             await emailjs.sendForm(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
                 import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -32,7 +39,7 @@ const Contact = () => {
             );
 
             // Reset form and stop loading
-            setForm({name: "", email: "", message: ""});
+            setForm({ name: "", email: "", message: "" });
         } catch (error) {
             console.error("EmailJS Error:", error); // Optional: show toast
         } finally {
@@ -44,8 +51,8 @@ const Contact = () => {
         <section id="contact" className="flex-center section-padding">
             <div className="w-full h-full md:px-10 px-5">
                 <TitleHeader
-                    title="Get in Touch – Let’s Connect"
-                    sub="💬 Have questions or ideas? Let’s talk! 🚀"
+                    title="Get in Touch – Let's Connect"
+                    sub="💬 Have questions or ideas? Let's talk! 🚀"
                 />
                 <div className="grid-12-cols mt-16">
                     <div className="xl:col-span-5">
@@ -63,7 +70,7 @@ const Contact = () => {
                                         name="name"
                                         value={form.name}
                                         onChange={handleChange}
-                                        placeholder="What’s your good name?"
+                                        placeholder="What's your good name?"
                                         required
                                     />
                                 </div>
@@ -76,7 +83,7 @@ const Contact = () => {
                                         name="email"
                                         value={form.email}
                                         onChange={handleChange}
-                                        placeholder="What’s your email address?"
+                                        placeholder="What's your email address?"
                                         required
                                     />
                                 </div>
@@ -89,7 +96,7 @@ const Contact = () => {
                                         value={form.message}
                                         onChange={handleChange}
                                         placeholder="How can I help you?"
-                                        rows="5"
+                                        rows={5}
                                         required
                                     />
                                 </div>
@@ -104,7 +111,7 @@ const Contact = () => {
                     </div>
                     <div className="xl:col-span-7 min-h-96 hidden xl:block">
                         <div className="bg-[#cd7c2e] w-full h-full rounded-3xl overflow-hidden">
-                            <Lottie animationData={contactAnimation} loop autoplay className="max-h-[400px] w-full"/>
+                            <Lottie animationData={contactAnimation} loop autoplay className="max-h-[400px] w-full" />
                         </div>
                     </div>
                 </div>
@@ -113,4 +120,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default Contact; 

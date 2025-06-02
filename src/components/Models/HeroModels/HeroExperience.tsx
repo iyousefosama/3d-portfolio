@@ -1,15 +1,22 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
-import { SpaceBoi } from './SpaceBoi.jsx';
+import { SpaceBoi } from './SpaceBoi';
 import { Suspense, useMemo } from "react";
 
-function HeroExperience() {
+interface CameraSettings {
+    position: [number, number, number];
+    fov: number;
+    near: number;
+    far: number;
+}
+
+const HeroExperience: React.FC = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
 
     // Memoize camera settings based on device
-    const cameraSettings = useMemo(() => ({
+    const cameraSettings: CameraSettings = useMemo(() => ({
         position: [0, 0, isMobile ? 20 : 15],
         fov: isMobile ? 35 : 45,
         near: 0.1,
@@ -89,6 +96,6 @@ function HeroExperience() {
             </Suspense>
         </Canvas>
     );
-}
+};
 
-export default HeroExperience;
+export default HeroExperience; 
