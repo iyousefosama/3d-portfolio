@@ -14,14 +14,14 @@ const navLinks = [
 ];
 
 const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Ideas", imgPath: "/images/icons/ideas.svg" },
+  { text: "Concepts", imgPath: "/images/icons/concepts.svg" },
+  { text: "Designs", imgPath: "/images/icons/designs.svg" },
+  { text: "Code", imgPath: "/images/icons/code.svg" },
+  { text: "Ideas", imgPath: "/images/icons/ideas.svg" },
+  { text: "Concepts", imgPath: "/images/icons/concepts.svg" },
+  { text: "Designs", imgPath: "/images/icons/designs.svg" },
+  { text: "Code", imgPath: "/images/icons/code.svg" },
 ];
 
 const counterItems = [
@@ -29,42 +29,6 @@ const counterItems = [
   { value: 20, suffix: "+", label: "Satisfied Clients" },
   { value: 50, suffix: "+", label: "Completed Projects" },
   { value: 90, suffix: "%", label: "Client Retention Rate" },
-];
-
-const logoIconsList = [
-  {
-    imgPath: "/images/logos/company-logo-1.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-2.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-3.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-4.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-5.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-6.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
-  },
 ];
 
 const abilities = [
@@ -86,56 +50,41 @@ const abilities = [
 ];
 
 const techStackImgs = [
-  {
-    name: "Front-end Developer",
-    imgPath: "/images/logos/react.png",
-  },
-  {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
-  },
-  {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
-  },
-  {
-    name: "Creative Developer",
-    imgPath: "/images/logos/three.png",
-  },
-  {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
-  },
+  { name: "Front-end Developer", imgPath: "/images/logos/react.png" },
+  { name: "Backend Developer", imgPath: "/images/logos/node.png" },
+  { name: "Python Developer", imgPath: "/images/logos/python.svg" },
+  { name: "Creative Developer", imgPath: "/images/logos/three.png" },
+  { name: "Project Manager", imgPath: "/images/logos/git.svg" },
 ];
 
 const techStackIcons = [
   {
     name: "Front-end Developer",
-    modelPath: "/models/react_logo-transformed.glb",
+    modelPath: "/models/tech/react_logo-transformed.glb",
     scale: 1,
     rotation: [0, 0, 0],
   },
   {
     name: "Backend Developer",
-    modelPath: "/models/node-transformed.glb",
+    modelPath: "/models/tech/node-transformed.glb",
     scale: 5,
     rotation: [0, -Math.PI / 2, 0],
   },
   {
     name: "Python Developer",
-    modelPath: "/models/python-transformed.glb",
+    modelPath: "/models/tech/python-transformed.glb",
     scale: 0.8,
     rotation: [0, 0, 0],
   },
   {
     name: "Creative Developer",
-    modelPath: "/models/three.js-transformed.glb",
+    modelPath: "/models/tech/three.js-transformed.glb",
     scale: 0.05,
     rotation: [0, 0, 0],
   },
   {
     name: "Project Manager",
-    modelPath: "/models/git-svg-transformed.glb",
+    modelPath: "/models/tech/git-svg-transformed.glb",
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
   },
@@ -144,7 +93,7 @@ const techStackIcons = [
 const expCards = [
   {
     review: "Yousef osama created a clean and powerful dashboard for managing Discord servers. His attention to detail and user-focused design really makes things easy to use.",
-    imgPath: "/images/wolfy.jpg",
+    imgPath: "/images/logos/wolfy.jpg",
     logoPath: "/images/logos/react.png",
     title: "Full Stack Developer – Wolfy Bot Dashboard",
     date: "Jan 2024 – Present",
@@ -156,7 +105,7 @@ const expCards = [
   },
   {
     review: "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It’s fast, clean, and shows a great understanding of full-stack concepts.",
-    imgPath: "/images/tomados-logo.png",
+    imgPath: "/images/logos/tomados-logo.png",
     logoPath: "/images/logos/node.png",
     title: "Full Stack Developer – Tomados Todos App",
     date: "May 2024 – Present",
@@ -182,34 +131,25 @@ const expCards = [
 
 
 const expLogos = [
-  {
-    name: "logo1",
-    imgPath: "/images/logo1.png",
-  },
-  {
-    name: "logo2",
-    imgPath: "/images/logo2.png",
-  },
-  {
-    name: "logo3",
-    imgPath: "/images/logo3.png",
-  },
+  { name: "logo1", imgPath: "/images/logos/logo1.png" },
+  { name: "logo2", imgPath: "/images/logos/logo2.png" },
+  { name: "logo3", imgPath: "/images/logos/logo3.png" },
 ];
 
 const social = [
   {
     name: "insta",
-    imgPath: "/images/insta.png",
+    imgPath: "/images/social/insta.png",
     link: "https://www.instagram.com/iiyousefosama/",
   },
   {
     name: "x",
-    imgPath: "/images/x.png",
+    imgPath: "/images/social/x.png",
     link: "https://x.com/iiyousefosama",
   },
   {
     name: "Github",
-    imgPath: "/images/github.png",
+    imgPath: "/images/logos/github.png",
     link: "https://github.com/iyousefosama",
   },
 ];
@@ -217,7 +157,6 @@ const social = [
 export {
   words,
   abilities,
-  logoIconsList,
   counterItems,
   expCards,
   expLogos,
@@ -226,3 +165,4 @@ export {
   techStackImgs,
   navLinks,
 };
+

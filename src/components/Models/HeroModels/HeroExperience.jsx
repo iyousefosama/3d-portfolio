@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
-import { SpaceBoi } from './SpaceBoi';
+import { SpaceBoi } from './SpaceBoi.jsx';
 import { Suspense, useMemo } from "react";
 
 function HeroExperience() {

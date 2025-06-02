@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import {useRef, useState} from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
-import ContactExperience from "../components/Models/contact/ContactExperience";
+import Lottie from "lottie-react";
+import contactAnimation from "../assets/animations/contact.json";
 
 const Contact = () => {
     const formRef = useRef(null);
@@ -14,8 +15,8 @@ const Contact = () => {
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
+        const {name, value} = e.target;
+        setForm({...form, [name]: value});
     };
 
     const handleSubmit = async (e) => {
@@ -31,7 +32,7 @@ const Contact = () => {
             );
 
             // Reset form and stop loading
-            setForm({ name: "", email: "", message: "" });
+            setForm({name: "", email: "", message: ""});
         } catch (error) {
             console.error("EmailJS Error:", error); // Optional: show toast
         } finally {
@@ -93,23 +94,17 @@ const Contact = () => {
                                     />
                                 </div>
 
-                                <button type="submit">
-                                    <div className="cta-button group">
-                                        <div className="bg-circle" />
-                                        <p className="text">
-                                            {loading ? "Sending..." : "Send Message"}
-                                        </p>
-                                        <div className="arrow-wrapper">
-                                            <img src="/images/arrow-down.svg" alt="arrow" />
-                                        </div>
-                                    </div>
+                                <button type="submit" className={"btn"}>
+                                    <p className="text">
+                                        {loading ? "Sending..." : "Send Message"}
+                                    </p>
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <div className="xl:col-span-7 min-h-96">
-                        <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
-                            <ContactExperience />
+                    <div className="xl:col-span-7 min-h-96 hidden xl:block">
+                        <div className="bg-[#cd7c2e] w-full h-full rounded-3xl overflow-hidden">
+                            <Lottie animationData={contactAnimation} loop autoplay className="max-h-[400px] w-full"/>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@ const Button = ({text = "Scroll", className = "", id = ""}) => {
                 <div className="bg-circle"/>
                 <p className="text font-semibold">{text}</p>
                 <div className="arrow-wrapper">
-                    <img src="/images/arrow-down.svg" alt="arrow-down"/>
+                    <img src="/images/icons/arrow-down.svg" alt="arrow-down"/>
                 </div>
             </div>
         </Motion.a>
