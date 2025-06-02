@@ -1,83 +1,91 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
-import { SpaceBoi } from './Space_boi.jsx';
-import {Suspense} from "react";
+import { SpaceBoi } from './SpaceBoi';
+import { Suspense, useMemo } from "react";
 
 function HeroExperience() {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
 
+    // Memoize camera settings based on device
+    const cameraSettings = useMemo(() => ({
+        position: [0, 0, isMobile ? 20 : 15],
+        fov: isMobile ? 35 : 45,
+        near: 0.1,
+        far: 1000
+    }), [isMobile]);
+
     return (
         <Canvas
-            camera={{ position: [0, 0, 15], fov: 45, near: 0.1, far: 1000 }}
-            gl={{ logarithmicDepthBuffer: true }}
-            shadows
+            camera={cameraSettings}
+            gl={{
+                antialias: !isMobile,
+                powerPreference: "high-performance",
+                alpha: true,
+                stencil: false,
+                depth: true
+            }}
+            dpr={isMobile ? [1, 1.5] : [1, 2]}
+            shadows={!isMobile}
         >
-            {/* Ambient light - subtle but present */}
-            <ambientLight intensity={0.3} />
+            <AdaptiveDpr pixelated />
+            <AdaptiveEvents />
 
-            {/* Key light - simulating the main light source */}
+            {/* Reduced lighting setup for mobile */}
+            <ambientLight intensity={0.4} />
             <directionalLight
                 position={[3, 10, 5]}
-                intensity={1.2}
-                castShadow
-                shadow-mapSize-width={2048}
-                shadow-mapSize-height={2048}
-                shadow-bias={-0.0001}
+                intensity={isMobile ? 0.8 : 1.2}
+                castShadow={!isMobile}
+                shadow-mapSize-width={isMobile ? 1024 : 2048}
+                shadow-mapSize-height={isMobile ? 1024 : 2048}
             />
 
-            {/* Fill light - softens shadows */}
-            <directionalLight
-                position={[-3, 5, -2]}
-                intensity={0.6}
-                color={'#f0f0f0'}
-            />
-
-            {/* Rim light - adds edge light to separate model from background */}
-            <spotLight
-                position={[0, 10, 10]}
-                angle={0.3}
-                intensity={1.5}
-                penumbra={0.5}
-                castShadow
-            />
-
-            {/* Optional: soft glow from screen */}
-            <pointLight
-                position={[0, 1.2, 0.5]}
-                intensity={0.3}
-                distance={4}
-                color={'#00ffff'}
-            />
+            {!isMobile && (
+                <>
+                    <directionalLight
+                        position={[-3, 5, -2]}
+                        intensity={0.6}
+                        color={'#f0f0f0'}
+                    />
+                    <spotLight
+                        position={[0, 10, 10]}
+                        angle={0.3}
+                        intensity={1.5}
+                        penumbra={0.5}
+                        castShadow
+                    />
+                </>
+            )}
 
             <pointLight
                 position={[0, 3, -8]}
-                intensity={1.2}
+                intensity={isMobile ? 0.8 : 1.2}
                 distance={10}
-                color="#4fd1c5" // teal glow
+                color="#4fd1c5"
             />
 
             <OrbitControls
                 enablePan={false}
                 enableZoom={!isTablet}
-                enableRotate={true}
+                enableRotate={!isMobile}
                 autoRotate={true}
                 autoRotateSpeed={0.5}
-                maxDistance={20}
-                minDistance={10}
+                maxDistance={isMobile ? 25 : 20}
+                minDistance={isMobile ? 15 : 10}
                 minPolarAngle={Math.PI / 5}
                 maxPolarAngle={Math.PI / 2}
             />
 
             <Suspense fallback={null}>
-            <group
-                scale={isMobile ? 0.7 : 1}
-                position={[0, -1.5, 0]}
-                rotation={[0, -Math.PI / 4, -0.1]}
-            >
-                <SpaceBoi/>
-            </group>
+                <group
+                    scale={isMobile ? 0.5 : 1}
+                    position={[0, -1.5, 0]}
+                    rotation={[0, -Math.PI / 4, -0.1]}
+                >
+                    <SpaceBoi />
+                </group>
             </Suspense>
         </Canvas>
     );

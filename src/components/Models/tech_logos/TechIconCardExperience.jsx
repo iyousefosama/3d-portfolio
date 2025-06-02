@@ -1,9 +1,11 @@
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import * as THREE from "three";
+import { useMediaQuery } from 'react-responsive';
 
 const TechIconCardExperience = ({ model }) => {
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const scene = useGLTF(model.modelPath);
 
     useEffect(() => {
@@ -18,16 +20,45 @@ const TechIconCardExperience = ({ model }) => {
         }
     }, [scene]);
 
+    // Optimize materials for mobile
+    useEffect(() => {
+        if (isMobile) {
+            scene.scene.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.roughness = 1;
+                    child.material.metalness = 0;
+                }
+            });
+        }
+    }, [scene, isMobile]);
+
+    const cameraSettings = useMemo(() => ({
+        position: [0, 0, isMobile ? 5 : 3],
+        fov: isMobile ? 35 : 45
+    }), [isMobile]);
+
     return (
-        <Canvas>
+        <Canvas
+            camera={cameraSettings}
+            gl={{
+                antialias: !isMobile,
+                powerPreference: "high-performance",
+                alpha: true,
+                stencil: false,
+                depth: true
+            }}
+            dpr={isMobile ? [1, 1.5] : [1, 2]}
+        >
             <ambientLight intensity={0.3} />
-            <directionalLight position={[5, 5, 5]} intensity={1} />
-            <spotLight
-                position={[10, 15, 10]}
-                angle={0.3}
-                penumbra={1}
-                intensity={2}
-            />
+            <directionalLight position={[5, 5, 5]} intensity={isMobile ? 0.8 : 1} />
+            {!isMobile && (
+                <spotLight
+                    position={[10, 15, 10]}
+                    angle={0.3}
+                    penumbra={1}
+                    intensity={2}
+                />
+            )}
             <Environment preset="city" />
 
             {/*
@@ -47,13 +78,22 @@ const TechIconCardExperience = ({ model }) => {
         THREE.Group object contains all the objects (meshes, lights, etc)
         that make up the 3D model.
       */}
-            <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
-                <group scale={model.scale} rotation={model.rotation}>
+            <Float 
+                speed={isMobile ? 3 : 5.5} 
+                rotationIntensity={isMobile ? 0.3 : 0.5} 
+                floatIntensity={isMobile ? 0.5 : 0.9}
+            >
+                <group scale={isMobile ? model.scale * 0.8 : model.scale} rotation={model.rotation}>
                     <primitive object={scene.scene} />
                 </group>
             </Float>
 
-            <OrbitControls enableZoom={false} />
+            <OrbitControls 
+                enableZoom={false} 
+                enableRotate={!isMobile}
+                autoRotate={!isMobile}
+                autoRotateSpeed={0.5}
+            />
         </Canvas>
     );
 };
