@@ -69,7 +69,7 @@ function HeroExperience() {
             <OrbitControls
                 enablePan={false}
                 enableZoom={!isTablet}
-                enableRotate={!isMobile}
+                enableRotate={true}
                 autoRotate={true}
                 autoRotateSpeed={0.5}
                 maxDistance={isMobile ? 25 : 20}
@@ -80,7 +80,7 @@ function HeroExperience() {
 
             <Suspense fallback={null}>
                 <group
-                    scale={isMobile ? 0.5 : 1}
+                    scale={isMobile ? 0.7 : 1}
                     position={[0, -1.5, 0]}
                     rotation={[0, -Math.PI / 4, -0.1]}
                 >
