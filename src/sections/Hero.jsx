@@ -21,9 +21,10 @@ function Hero() {
     })
     return (
         <section id={"hero"} className={"relative overflow-hidden"}>
-            <div className={"absolute top-0 left-0 z-10"}>
+
+{/*            <div className={"absolute top-0 left-0 z-10"}>
                 <img src={"/images/bg.png"} alt={"background"} />
-            </div>
+            </div>*/}
 
             <div className={"hero-layout"}>
                 {/* Left: Hero content */}
@@ -36,8 +37,8 @@ function Hero() {
                                     <span className={"wrapper"}>
                                         {words.map((word, key) => (
                                             <span className={"flex items-center gap-1 md:gap-3 pb-2"} key={key}>
-                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-cyan-100"}/>
-                                                <span className={"text text-cyan-100"}>{word.text}</span>
+                                                <img src={word.imgPath} alt={word.text} className={"size-8 md:size-10 xl:size-12 p-1 md:p-2 rounded-full bg-white-50"}/>
+                                                <span className={"text text-white-50 underline"}>{word.text}</span>
                                             </span>
                                         ))}
                                     </span>
@@ -53,7 +54,7 @@ function Hero() {
                         <p className={"relative z-10 pointer-events-none text-white-50 md:text-xl"}>
                             Hello, I'm yousef, a developer based in Egypt with a passion for javascript!
                         </p>
-                        <Button text={"Work section"} className={"w-60 h-12 md:w-80 md:h-16"} id={"button"} />
+                        <Button text={"Work section"} className={"w-60 h-12 md:w-80 md:h-16"} id={"counters"} />
                     </div>
                 </header>
                 {/* Right: Hero 3D model */}
