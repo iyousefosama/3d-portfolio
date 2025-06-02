@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
 import { SpaceBoi } from './Space_boi.jsx';
+import {Suspense} from "react";
 
 function HeroExperience() {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -69,13 +70,15 @@ function HeroExperience() {
                 maxPolarAngle={Math.PI / 2}
             />
 
+            <Suspense fallback={null}>
             <group
                 scale={isMobile ? 0.7 : 1}
                 position={[0, -1.5, 0]}
                 rotation={[0, -Math.PI / 4, -0.1]}
             >
-                <SpaceBoi />
+                <SpaceBoi/>
             </group>
+            </Suspense>
         </Canvas>
     );
 }
