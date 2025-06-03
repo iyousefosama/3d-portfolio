@@ -43,9 +43,11 @@ interface ExpCard {
   review: string;
   imgPath: string;
   logoPath: string;
+  iconType: "react" | "nodejs" | "git" | "unity" | "javascript" | "typescript";
   title: string;
   date: string;
   responsibilities: string[];
+  technologies: string[];
 }
 
 interface Logo {
@@ -152,6 +154,7 @@ const expCards: ExpCard[] = [
     review: "Yousef osama created a clean and powerful dashboard for managing Discord servers. His attention to detail and user-focused design really makes things easy to use.",
     imgPath: "/images/logos/wolfy.jpg",
     logoPath: "/images/logos/react.png",
+    iconType: "react",
     title: "Full Stack Developer – Wolfy Bot Dashboard",
     date: "Jan 2024 – Present",
     responsibilities: [
@@ -159,11 +162,13 @@ const expCards: ExpCard[] = [
       "Integrated Discord OAuth2 for secure user authentication.",
       "Implemented dynamic guild settings, embed builders, and live data syncing with WebSockets.",
     ],
+    technologies: ["Next.js", "Express.js", "MongoDB", "TailwindCSS", "Discord OAuth2", "WebSockets"],
   },
   {
     review: "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It's fast, clean, and shows a great understanding of full-stack concepts.",
     imgPath: "/images/logos/tomados-logo.png",
     logoPath: "/images/logos/node.png",
+    iconType: "nodejs",
     title: "Full Stack Developer – Tomados Todos App",
     date: "May 2024 – Present",
     responsibilities: [
@@ -171,11 +176,13 @@ const expCards: ExpCard[] = [
       "Used React Query for efficient state and server-side data management.",
       "Implemented GitHub OAuth login and dynamic user-based data storage.",
     ],
+    technologies: ["Next.js", "MongoDB", "TypeScript", "React Query", "GitHub OAuth"],
   },
   {
     review: "Yousef isn't limited to just web development — he constantly pushes himself by learning new tech stacks, building games, desktop apps, and exploring creative ideas beyond the browser.",
     imgPath: "/images/ok.png",
     logoPath: "/images/logos/git.svg",
+    iconType: "git",
     title: "Versatile Developer – Games & Desktop Apps",
     date: "2023 – Present",
     responsibilities: [
@@ -183,6 +190,7 @@ const expCards: ExpCard[] = [
       "Built cross-platform desktop applications using Electron combined with React and TailwindCSS.",
       "Always learning — exploring C++, Java, and Python to expand skillset and apply them in real-world creative projects.",
     ],
+    technologies: ["Unity", "JavaScript", "Phaser", "Electron", "React", "TailwindCSS", "C++", "Java", "Python"],
   }
 ];
 

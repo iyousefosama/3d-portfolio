@@ -1,65 +1,70 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import TitleHeader from "../components/TitleHeader";
 import { techStackImgs } from "../../constants/index";
 
-const TechStack: React.FC = () => {
-    // Animate the tech cards in the skills section
-    useGSAP(() => {
-        // This animation is triggered when the user scrolls to the #skills wrapper
-        // The animation starts when the top of the wrapper is at the center of the screen
-        // The animation is staggered, meaning each card will animate in sequence
-        // The animation ease is set to "power2.inOut", which is a slow-in fast-out ease
-        gsap.fromTo(
-            ".tech-card",
-            {
-                // Initial values
-                y: 50, // Move the cards down by 50px
-                opacity: 0, // Set the opacity to 0
-            },
-            {
-                // Final values
-                y: 0, // Move the cards back to the top
-                opacity: 1, // Set the opacity to 1
-                duration: 1, // Duration of the animation
-                ease: "power2.inOut", // Ease of the animation
-                stagger: 0.2, // Stagger the animation by 0.2 seconds
-                scrollTrigger: {
-                    trigger: "#skills", // Trigger the animation when the user scrolls to the #skills wrapper
-                    start: "top center", // Start the animation when the top of the wrapper is at the center of the screen
-                },
-            }
-        );
-    });
-
-    return (
-        <div id="skills" className="flex-center section-padding">
-            <div className="w-full h-full md:px-10 px-5">
-                <TitleHeader
-                    title="My Strengths & Contributions"
-                    sub="💡 Key Areas Where I Add Value"
-                />
-                <div className="tech-grid">
-                    {techStackImgs.map((techStackIcon, index) => (
-                        <div
-                            key={index}
-                            className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-                        >
-                            <div className="tech-card-animated-bg" />
-                            <div className="tech-card-content">
-                                <div className="tech-icon-wrapper">
-                                    <img src={techStackIcon.imgPath} alt={techStackIcon.name} />
-                                </div>
-                                <div className="padding-x w-full">
-                                    <p>{techStackIcon.name}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    );
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  }),
 };
 
-export default TechStack; 
+const TechStack: React.FC = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" }); // Trigger only once
+
+  return (
+    <div id="skills" className="flex-center section-padding">
+      <div className="w-full h-full md:px-10 px-5">
+        <TitleHeader
+          title="My Strengths & Contributions"
+          sub="💡 Key Areas Where I Add Value"
+        />
+        <div ref={ref} className="tech-grid">
+          {techStackImgs.map((techStackIcon, index) => (
+            <motion.div
+              key={index}
+              className="card-border tech-card overflow-hidden group rounded-md bg-gradient-to-br from-zinc-900/10 to-zinc-900/5 backdrop-blur-sm border border-white/10 shadow-cyan-600/20 shadow-2xl transition-all duration-300 will-change-transform hover:scale-110 hover:shadow-yellow-600/20"
+              variants={cardVariants}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              whileTap={{ scale: 0.95 }}
+              custom={index} // Used to apply stagger
+            >
+              <div className="tech-card-content">
+                <div className="tech-icon-wrapper">
+                  <motion.img
+                    src={techStackIcon.imgPath}
+                    alt={techStackIcon.name}
+                    whileHover={{ rotate: 360 }}
+                    animate={{
+                      y: [0, -10, 0],
+                      transition: {
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        ease: "easeInOut",
+                      }
+                    }}
+                  />
+                </div>
+                <div className="padding-x w-full">
+                  <p>{techStackIcon.name}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TechStack;
