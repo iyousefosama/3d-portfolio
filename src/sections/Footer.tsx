@@ -1,4 +1,6 @@
-import { social } from "../../constants/index";
+import { social } from "../../constants";
+import SocialButton from "@/components/custom/SocialButton.tsx";
+import React from "react";
 
 const Footer: React.FC = () => {
     return (
@@ -11,9 +13,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="socials">
                     {social.map((social, index) => (
-                        <a key={index} className="icon" href={social.link} target="_blank" rel="noopener noreferrer">
-                            <img src={social.imgPath} alt={social.name} />
-                        </a>
+                        <SocialButton key={index} icon={social.icon} link={social.link} />
                     ))}
                 </div>
                 <div className="flex flex-col justify-center">

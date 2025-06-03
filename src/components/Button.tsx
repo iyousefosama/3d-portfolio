@@ -1,4 +1,4 @@
-import { motion as Motion } from "framer-motion";
+import { scrollToElementById } from "@/lib/utils";
 
 interface ButtonProps {
     text?: string;
@@ -6,43 +6,31 @@ interface ButtonProps {
     id?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text = "Scroll", className = "", id = "" }) => {
-    return (
-        <Motion.a
-            onClick={(e) => {
-                e.preventDefault(); // Stop the link from jumping instantly
+/**
+ * A reusable CTA button component.
+ * When clicked, it scrolls smoothly to the section with ID "counter",
+ * with a small offset from the top for better visual placement.
+ */
 
-                const target = document.getElementById(id); // Find the section with ID "counter"
+const Button = ({ text, className="", id="#hero" }: ButtonProps) => {
+  return (
+    <a
+      onClick={(e) => {
+        e.preventDefault(); // Stop the link from jumping instantly
 
-                // Only scroll if we found the section and an ID is passed in
-                // that prevents the contact button from scrolling to the top
-                if (target && id) {
-                    const offset = window.innerHeight * 0.15; // Leave a bit of space at the top
-
-                    // Calculate how far down the page we need to scroll
-                    const top =
-                        target.getBoundingClientRect().top + window.pageYOffset - offset;
-
-                    // Scroll smoothly to that position
-                    window.scrollTo({ top, behavior: "smooth" });
-                }
-            }}
-            className={`cta-wrapper ${className}`}
-            role="button"
-            tabIndex={0}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1, transition: { duration: 1, type: "spring", bounceDamping: 10, bounceStiffness: 100 } }}
-            whileHover={{ scale: 0.95 }}
-        >
-            <div className="cta-button group">
-                <div className="bg-circle" />
-                <p className="text font-semibold">{text}</p>
-                <div className="arrow-wrapper">
-                    <img src="/images/icons/arrow-down.svg" alt="arrow-down" />
-                </div>
-            </div>
-        </Motion.a>
-    );
+        scrollToElementById(id);
+      }}
+      className={`${className} cta-wrapper`} // Add base + extra class names
+    >
+      <div className="cta-button group">
+        <div className="bg-circle" />
+        <p className="text">{text}</p>
+        <div className="arrow-wrapper">
+          <img src="/images/icons/arrow-down.svg" alt="arrow" />
+        </div>
+      </div>
+    </a>
+  );
 };
 
-export default Button; 
+export default Button;

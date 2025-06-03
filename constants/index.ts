@@ -1,3 +1,6 @@
+import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import { IconType } from "react-icons";
+
 interface NavLink {
   name: string;
   link: string;
@@ -48,7 +51,7 @@ interface Logo {
 
 interface Social {
   name: string;
-  imgPath: string;
+  icon: IconType;
   link: string;
 }
 
@@ -192,17 +195,17 @@ const expLogos: Logo[] = [
 const social: Social[] = [
   {
     name: "insta",
-    imgPath: "/images/social/insta.png",
+    icon: FaInstagram,
     link: "https://www.instagram.com/iiyousefosama/",
   },
   {
     name: "x",
-    imgPath: "/images/social/x.png",
+    icon: FaTwitter,
     link: "https://x.com/iiyousefosama",
   },
   {
     name: "Github",
-    imgPath: "/images/logos/github.png",
+    icon: FaGithub,
     link: "https://github.com/iyousefosama",
   },
 ];
