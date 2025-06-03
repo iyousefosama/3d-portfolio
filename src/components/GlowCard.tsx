@@ -1,4 +1,6 @@
-import { useRef, ReactNode } from "react";
+import { useRef, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
+import { debounce } from "../lib/utils";
 
 interface ExpCard {
     review: string;
@@ -12,35 +14,50 @@ interface ExpCard {
 interface GlowCardProps {
     card: ExpCard;
     index: number;
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 const GlowCard: React.FC<GlowCardProps> = ({ card, index, children }) => {
-    // refs for all the cards
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const isLowEndDevice = useMediaQuery({ query: '(prefers-reduced-motion)' }) || 
+                          navigator.hardwareConcurrency <= 4;
 
-    // when mouse moves over a card, rotate the glow effect
-    const handleMouseMove = (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
-        // get the current card
+    useEffect(() => {
+        // Skip glow effect on mobile or low-end devices
+        if (isMobile || isLowEndDevice) return;
+        
         const card = cardRefs.current[index];
         if (!card) return;
+        
+        // Set initial angle
+        card.style.setProperty("--start", "60");
+        
+        return () => {
+            // Cleanup
+        };
+    }, [index, isMobile, isLowEndDevice]);
 
-        // get the mouse position relative to the card
-        const rect = card.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left - rect.width / 2;
-        const mouseY = e.clientY - rect.top - rect.height / 2;
+    // Debounce the mouse move handler to improve performance
+    const handleMouseMove = (index: number) => {
+        // Skip on mobile or low-end devices
+        if (isMobile || isLowEndDevice) return () => {};
+        
+        return debounce((e: React.MouseEvent<HTMLDivElement>) => {
+            const card = cardRefs.current[index];
+            if (!card) return;
 
-        // calculate the angle from the center of the card to the mouse
-        let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
+            const rect = card.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left - rect.width / 2;
+            const mouseY = e.clientY - rect.top - rect.height / 2;
 
-        // adjust the angle so that it's between 0 and 360
-        angle = (angle + 360) % 360;
+            let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
+            angle = (angle + 360) % 360;
 
-        // set the angle as a CSS variable
-        card.style.setProperty("--start", `${angle + 60}`);
+            card.style.setProperty("--start", `${angle + 60}`);
+        }, 10); // 10ms debounce
     };
 
-    // return the card component with the mouse move event
     return (
         <div
             ref={(el) => {
@@ -49,10 +66,12 @@ const GlowCard: React.FC<GlowCardProps> = ({ card, index, children }) => {
             onMouseMove={handleMouseMove(index)}
             className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column"
         >
-            <div className="glow"></div>
+            {/* Only render glow effect on desktop */}
+            {!isMobile && !isLowEndDevice && <div className="glow"></div>}
+            
             <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: 5 }, (_, i) => (
-                    <img key={i} src="/images/star.png" alt="star" className="size-5" />
+                    <img key={i} src="/images/star.png" alt="star" className="size-5" loading="lazy" />
                 ))}
             </div>
             <div className="mb-5">

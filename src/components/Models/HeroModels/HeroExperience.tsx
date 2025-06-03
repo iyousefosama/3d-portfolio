@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, AdaptiveDpr, AdaptiveEvents } from '@react-three/drei';
+import { OrbitControls, AdaptiveDpr, AdaptiveEvents, Preload } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
 import { SpaceBoi } from './SpaceBoi';
 import { Suspense, useMemo } from "react";
@@ -14,11 +14,13 @@ interface CameraSettings {
 const HeroExperience: React.FC = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
     const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+    const isLowEndDevice = useMediaQuery({ query: '(prefers-reduced-motion)' }) || 
+                          navigator.hardwareConcurrency <= 4;
 
     // Memoize camera settings based on device
     const cameraSettings: CameraSettings = useMemo(() => ({
-        position: [0, 0, isMobile ? 20 : 15],
-        fov: isMobile ? 35 : 45,
+        position: [0, 0,  15],
+        fov: 45,
         near: 0.1,
         far: 1000
     }), [isMobile]);
@@ -27,14 +29,15 @@ const HeroExperience: React.FC = () => {
         <Canvas
             camera={cameraSettings}
             gl={{
-                antialias: !isMobile,
-                powerPreference: "high-performance",
+                antialias: !isMobile && !isLowEndDevice,
+                powerPreference: isLowEndDevice ? "low-power" : "high-performance",
                 alpha: true,
                 stencil: false,
                 depth: true
             }}
-            dpr={isMobile ? [1, 1.5] : [1, 2]}
-            shadows={!isMobile}
+            dpr={isMobile || isLowEndDevice ? [1, 1.5] : 2} // Lower resolution for mobile/low-end
+            shadows={false}
+            performance={{ min: 0.5 }} // Allow frame rate to drop to improve performance
         >
             <AdaptiveDpr pixelated />
             <AdaptiveEvents />
@@ -44,12 +47,12 @@ const HeroExperience: React.FC = () => {
             <directionalLight
                 position={[3, 10, 5]}
                 intensity={isMobile ? 0.8 : 1.2}
-                castShadow={!isMobile}
-                shadow-mapSize-width={isMobile ? 1024 : 2048}
-                shadow-mapSize-height={isMobile ? 1024 : 2048}
+                castShadow={!isMobile && !isLowEndDevice}
+                shadow-mapSize-width={isMobile ? 512 : 1024}
+                shadow-mapSize-height={isMobile ? 512 : 1024}
             />
 
-            {!isMobile && (
+            {!isMobile && !isLowEndDevice && (
                 <>
                     <directionalLight
                         position={[-3, 5, -2]}
@@ -78,7 +81,7 @@ const HeroExperience: React.FC = () => {
                 enableZoom={!isTablet}
                 enableRotate={true}
                 autoRotate={true}
-                autoRotateSpeed={0.5}
+                autoRotateSpeed={isLowEndDevice ? 0.2 : 0.5}
                 maxDistance={isMobile ? 25 : 20}
                 minDistance={isMobile ? 15 : 10}
                 minPolarAngle={Math.PI / 5}
@@ -94,6 +97,9 @@ const HeroExperience: React.FC = () => {
                     <SpaceBoi />
                 </group>
             </Suspense>
+            
+            {/* Preload assets to prevent jank when they first appear */}
+            <Preload all />
         </Canvas>
     );
 };

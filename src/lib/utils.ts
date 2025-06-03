@@ -16,3 +16,20 @@ export function scrollToElementById(id: string, offsetPercent: number = 0.15) {
 
   window.scrollTo({ top, behavior: "smooth" });
 }
+
+// Add debounce utility function
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  
+  return function(...args: Parameters<T>) {
+    if (timeout) clearTimeout(timeout);
+    
+    timeout = setTimeout(() => {
+      func(...args);
+    }, wait);
+  };
+}
+
