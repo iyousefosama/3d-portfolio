@@ -2,21 +2,14 @@
 
 import React from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Code2, Palette, Lightbulb, ChevronDown } from "lucide-react"
+import { Sparkles, ChevronDown } from "lucide-react"
 import HeroExperience from "@/components/Models/HeroModels/HeroExperience"
-// immport button as ctabutton from "@/components/ui/button"
 import Ctabutton from "@/components/Button"
 import { Button } from "@/components/ui/button"
 
 import AnimatedCounters from "@/components/AnimatedCounters"
 import { scrollToElementById } from "@/lib/utils"
-
-const words = [
-    { text: "Innovation", icon: Lightbulb, color: "text-yellow-400" },
-    { text: "Excellence", icon: Sparkles, color: "text-purple-400" },
-    { text: "Creativity", icon: Palette, color: "text-pink-400" },
-    { text: "Solutions", icon: Code2, color: "text-blue-400" },
-]
+import { words } from "../../constants"
 
 const Hero: React.FC = () => {
     const [currentWordIndex, setCurrentWordIndex] = React.useState(0)

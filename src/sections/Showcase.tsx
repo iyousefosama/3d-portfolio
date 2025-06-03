@@ -62,6 +62,7 @@ const Showcase: React.FC = () => {
           y: 0,
           scale: 1,
           duration: 0.8,
+          stagger: 0.2,
           ease: "power2.out",
         },
         `-=${index === 0 ? 0.3 : 0.6}`,

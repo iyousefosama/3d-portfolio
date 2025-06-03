@@ -1,5 +1,6 @@
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { IconType } from "react-icons";
+import {Code2, Lightbulb, Palette, Sparkles, SmilePlus} from "lucide-react";
 
 interface NavLink {
   name: string;
@@ -8,13 +9,16 @@ interface NavLink {
 
 interface Word {
   text: string;
-  imgPath: string;
+  icon: IconType;
+  color: string;
 }
 
 interface CounterItem {
   value: number;
   suffix: string;
   label: string;
+  icon: IconType;
+  color: string;
 }
 
 interface Ability {
@@ -71,21 +75,17 @@ const navLinks: NavLink[] = [
 ];
 
 const words: Word[] = [
-  { text: "Ideas", imgPath: "/images/icons/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/icons/concepts.svg" },
-  { text: "Designs", imgPath: "/images/icons/designs.svg" },
-  { text: "Code", imgPath: "/images/icons/code.svg" },
-  { text: "Ideas", imgPath: "/images/icons/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/icons/concepts.svg" },
-  { text: "Designs", imgPath: "/images/icons/designs.svg" },
-  { text: "Code", imgPath: "/images/icons/code.svg" },
+  { text: "Innovation", icon: Lightbulb, color: "text-yellow-400" },
+  { text: "Excellence", icon: Sparkles, color: "text-purple-400" },
+  { text: "Creativity", icon: Palette, color: "text-pink-400" },
+  { text: "Solutions", icon: Code2, color: "text-blue-400" },
 ];
 
 const counterItems: CounterItem[] = [
-  { value: 5, suffix: "+", label: "Years of Experience" },
-  { value: 20, suffix: "+", label: "Satisfied Clients" },
-  { value: 50, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+  { value: 5, suffix: "+", label: "Years of Experience", icon: Code2, color: "text-blue-400" },
+  { value: 20, suffix: "+", label: "Satisfied Clients", icon: SmilePlus, color: "text-green-300" },
+  { value: 50, suffix: "+", label: "Completed Projects", icon: Lightbulb, color: "text-yellow-400" },
+  { value: 90, suffix: "%", label: "Client Retention Rate", icon: Sparkles, color: "text-purple-400" },
 ];
 
 const abilities: Ability[] = [
