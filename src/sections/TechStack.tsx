@@ -21,7 +21,7 @@ const TechStack: React.FC = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" }); // Trigger only once
 
   return (
-    <div id="skills" className="flex-center section-padding">
+    <div id="skills" className="flex-center padding-x-lg">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="My Strengths & Contributions"
@@ -44,15 +44,6 @@ const TechStack: React.FC = () => {
                     src={techStackIcon.imgPath}
                     alt={techStackIcon.name}
                     whileHover={{ rotate: 360 }}
-                    animate={{
-                      y: [0, -10, 0],
-                      transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
-                      }
-                    }}
                   />
                 </div>
                 <div className="padding-x w-full">

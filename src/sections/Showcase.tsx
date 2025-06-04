@@ -203,7 +203,7 @@ const Showcase: React.FC = () => {
             <a href="https://github.com/iyousefosama?tab=repositories" target="_blank" rel="noopener noreferrer">
               <Button
                   size="lg"
-                  className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+                  className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white"
               >
                 View All Projects
                 <ArrowRight className="w-4 h-4 ml-2" />
