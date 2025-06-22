@@ -37,7 +37,7 @@ const AnimatedCounters: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.8, delay: index * 0.2 }}
-                        className="flex flex-col justify-center bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/2 p-10 rounded-lg hover:cursor-pointer hover:scale-105 transition-all duration-300"
+                        className="flex flex-col justify-center bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/2 p-10 rounded-lg hover:brightness-125 hover:from-white/20 transition duration-300"
                     >
                         <div className="counter-number text-white text-5xl font-bold mb-2">
                             {isInView && <AnimatedCounter value={item.value} suffix={item.suffix} />}

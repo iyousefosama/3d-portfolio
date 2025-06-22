@@ -31,11 +31,10 @@ const TechStack: React.FC = () => {
           {techStackImgs.map((techStackIcon, index) => (
             <motion.div
               key={index}
-              className="card-border tech-card overflow-hidden group rounded-md bg-gradient-to-br from-zinc-900/10 to-zinc-900/5 backdrop-blur-sm border border-white/10 shadow-cyan-600/20 shadow-2xl transition-all duration-300 will-change-transform hover:scale-110 hover:shadow-yellow-600/20"
+              className="card-border tech-card overflow-hidden rounded-md bg-gradient-to-br from-zinc-900/10 to-zinc-900/5 backdrop-blur-sm border border-white/10 shadow-cyan-600/20 shadow-2xl transition-all duration-300 will-change-transform hover:scale-110 hover:shadow-yellow-600/20"
               variants={cardVariants}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              whileTap={{ scale: 0.95 }}
               custom={index} // Used to apply stagger
             >
               <div className="tech-card-content">
