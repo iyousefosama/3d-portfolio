@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import AnimatedCounters from "@/components/AnimatedCounters"
 import { scrollToElementById } from "@/lib/utils"
 import { words } from "../../constants"
+import ScrollSection from "@/components/custom/ScrollSection"
 
 const Hero: React.FC = () => {
     const [currentWordIndex, setCurrentWordIndex] = React.useState(0)
@@ -70,6 +71,7 @@ const Hero: React.FC = () => {
 
     return (
         <section id={"hero"} className={"relative overflow-hidden"}>
+                <ScrollSection />
             <div className={"hero-layout"}>
                 {/* Left: Hero content */}
                 <motion.header className={"flex flex-col justify-center md:w-full w-screen md:px-20 px-5"}

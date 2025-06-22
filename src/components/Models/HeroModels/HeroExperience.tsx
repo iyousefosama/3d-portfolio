@@ -13,7 +13,7 @@ interface CameraSettings {
 
 const HeroExperience: React.FC = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+    /* const isTablet = useMediaQuery({ query: '(max-width: 1024px)' }); */
     const isLowEndDevice = useMediaQuery({ query: '(prefers-reduced-motion)' }) || 
                           navigator.hardwareConcurrency <= 4;
 
@@ -78,7 +78,7 @@ const HeroExperience: React.FC = () => {
 
             <OrbitControls
                 enablePan={false}
-                enableZoom={!isTablet}
+                enableZoom={false}
                 enableRotate={true}
                 autoRotate={true}
                 autoRotateSpeed={isLowEndDevice ? 0.2 : 0.5}
