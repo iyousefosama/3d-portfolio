@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import AnimatedCounters from "@/components/AnimatedCounters"
 import { scrollToElementById } from "@/lib/utils"
 import { words } from "../../constants"
-import ScrollSection from "@/components/custom/ScrollSection"
+/* import ScrollSection from "@/components/custom/ScrollSection" */
 
 const Hero: React.FC = () => {
     const [currentWordIndex, setCurrentWordIndex] = React.useState(0)
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
 
     return (
         <section id={"hero"} className={"relative overflow-hidden"}>
-                <ScrollSection />
+            {/* <ScrollSection /> */}
             <div className={"hero-layout"}>
                 {/* Left: Hero content */}
                 <motion.header className={"flex flex-col justify-center md:w-full w-screen md:px-20 px-5"}
@@ -113,9 +113,14 @@ const Hero: React.FC = () => {
                             </motion.div>
                         </div>
                         {/* Description */}
-                        <motion.p variants={itemVariants} className="text-sm md:text-xl text-white/70 leading-relaxed max-w-2xl relative z-10 pointer-events-none">
-                            Passionate full-stack developer specializing in modern web technologies. I transform complex challenges
-                            into elegant, scalable solutions that drive business growth.
+                        <motion.p
+                            variants={itemVariants}
+                            className="text-sm md:text-xl leading-relaxed max-w-2xl relative z-10 pointer-events-none text-white-50"
+                        >
+                            <span className="bg-black/50 backdrop-blur-sm rounded px-2">
+                                Passionate full-stack developer specializing in modern web technologies. I transform complex challenges
+                                into elegant, scalable solutions that drive business growth.
+                            </span>
                         </motion.p>
                         <Ctabutton text={"View my work"} className={"hidden md:block w-60 h-12 md:w-80 md:h-16"} id={"counters"} />
                         <Button className="md:hidden w-12 h-12 relative z-20 cursor-pointer" onClick={(e) => {

@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useRef } from "react"
-import { motion, useAnimation, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github } from "lucide-react"
 import TitleHeader from "@/components/TitleHeader"
+import { motion, useAnimation, useInView } from "framer-motion"
 
 const projectVariants = {
   hidden: { opacity: 0, y: 60, scale: 0.95 },
@@ -31,7 +31,7 @@ const Showcase: React.FC = () => {
   }, [isInView, controls])
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" ref={sectionRef} className="py-20 px-4 section-padding  sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"

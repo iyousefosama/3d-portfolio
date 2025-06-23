@@ -29,7 +29,7 @@ const AnimatedCounters: React.FC = () => {
     const isInView = useInView(containerRef, { once: true });
 
     return (
-        <div id="counters" className="padding-x-lg mt-32 mb-6">
+        <div id="counters" className="padding-x-lg z-30 relative mt-32 lg:mt-16 mb-6">
             <div ref={containerRef} className="mx-auto grid-4-cols">
                 {counterItems.map((item, index) => (
                     <motion.div

@@ -87,7 +87,7 @@ const counterItems: CounterItem[] = [
   { value: 5, suffix: "+", label: "Years of Experience", icon: Code2, color: "text-blue-400" },
   { value: 20, suffix: "+", label: "Satisfied Clients", icon: SmilePlus, color: "text-green-300" },
   { value: 50, suffix: "+", label: "Completed Projects", icon: Lightbulb, color: "text-yellow-400" },
-  { value: 90, suffix: "%", label: "Client Retention Rate", icon: Sparkles, color: "text-purple-400" },
+  { value: 100, suffix: "+", label: "Positive Feedbacks", icon: Sparkles, color: "text-purple-400" },
 ];
 
 const abilities: Ability[] = [
