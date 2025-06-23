@@ -1,65 +1,17 @@
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
-import { IconType } from "react-icons";
-import {Code2, Lightbulb, Palette, Sparkles, SmilePlus} from "lucide-react";
-
-interface NavLink {
-  name: string;
-  link: string;
-}
-
-interface Word {
-  text: string;
-  icon: IconType;
-  color: string;
-}
-
-interface CounterItem {
-  value: number;
-  suffix: string;
-  label: string;
-  icon: IconType;
-  color: string;
-}
-
-interface Ability {
-  imgPath: string;
-  title: string;
-  desc: string;
-}
-
-interface TechStackImg {
-  name: string;
-  imgPath: string;
-}
-
-interface TechStackIcon {
-  name: string;
-  modelPath: string;
-  scale: number;
-  rotation: [number, number, number];
-}
-
-interface ExpCard {
-  review: string;
-  imgPath: string;
-  logoPath: string;
-  iconType: "react" | "nodejs" | "git" | "unity" | "javascript" | "typescript";
-  title: string;
-  date: string;
-  responsibilities: string[];
-  technologies: string[];
-}
-
-interface Logo {
-  name: string;
-  imgPath: string;
-}
-
-interface Social {
-  name: string;
-  icon: IconType;
-  link: string;
-}
+import { Code2, Lightbulb, Palette, Sparkles, SmilePlus } from "lucide-react";
+import {
+  NavLink,
+  Word,
+  CounterItem,
+  Ability,
+  ProjectCard,
+  TechStackImg,
+  TechStackIcon,
+  ExpCard,
+  Logo,
+  Social,
+} from "@/lib/types";
 
 const navLinks: NavLink[] = [
   {
@@ -84,10 +36,34 @@ const words: Word[] = [
 ];
 
 const counterItems: CounterItem[] = [
-  { value: 5, suffix: "+", label: "Years of Experience", icon: Code2, color: "text-blue-400" },
-  { value: 20, suffix: "+", label: "Satisfied Clients", icon: SmilePlus, color: "text-green-300" },
-  { value: 50, suffix: "+", label: "Completed Projects", icon: Lightbulb, color: "text-yellow-400" },
-  { value: 100, suffix: "+", label: "Positive Feedbacks", icon: Sparkles, color: "text-purple-400" },
+  {
+    value: 5,
+    suffix: "+",
+    label: "Years of Experience",
+    icon: Code2,
+    color: "text-blue-400",
+  },
+  {
+    value: 20,
+    suffix: "+",
+    label: "Satisfied Clients",
+    icon: SmilePlus,
+    color: "text-green-300",
+  },
+  {
+    value: 50,
+    suffix: "+",
+    label: "Completed Projects",
+    icon: Lightbulb,
+    color: "text-yellow-400",
+  },
+  {
+    value: 100,
+    suffix: "+",
+    label: "Positive Feedbacks",
+    icon: Sparkles,
+    color: "text-purple-400",
+  },
 ];
 
 const abilities: Ability[] = [
@@ -105,6 +81,100 @@ const abilities: Ability[] = [
     imgPath: "/images/shuttle.png",
     title: "Fast & Focused Delivery",
     desc: "Shipping projects on time without compromising quality or performance.",
+  },
+];
+
+const projects: ProjectCard[] = [
+  {
+    title: "Tomados - Task Management Revolution",
+    description:
+      "A sleek, intuitive task management application built with Next.js. Features real-time collaboration, productivity analytics, and a beautiful mobile-first design that helps teams stay organized and focused.",
+    demo_url: "https://tomados-todolist.vercel.app/",
+    code_url: "https://github.com/mishcoders/todos-list",
+    badges: [
+      {
+        title: "Featured",
+        className:
+          "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
+      },
+      {
+        title: "Next.js",
+        className: "bg-black/40 border-steel-400 text-white-50",
+      },
+      {
+        title: "React",
+        className: "bg-steel-900 border-steel-400 text-blue-400",
+      },
+    ],
+    img: {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/todo-app.jpg-zMQTVKvc6pBxpkf1sflXK2mJXZ3W0m.jpeg",
+      alt: "Tomados Task Management App",
+    },
+    extras_className: {
+      container: "border border-slate-200 dark:border-orange-700",
+      btnDemo: "bg-orange-600 hover:bg-orange-700",
+      btnCode: "",
+      grid: "grid md:grid-cols-2 gap-0",
+      cardWrapper: "lg:col-span-2",
+      isBigImage: true,
+    },
+  },
+  {
+    title: "Wolfy Bot Dashboard",
+    description:
+      "A comprehensive Discord bot management dashboard featuring command management, server analytics, and automated moderation tools.",
+    demo_url: "https://wolfy-navy.vercel.app/",
+    badges: [
+      {
+        title: "Next.js",
+        className: "bg-black/40 border-steel-400 text-white-50",
+      },
+      {
+        title: "Discord.js",
+        className: "bg-steel-900 border-steel-400 text-[#7289da]",
+      },
+      {
+        title: "React",
+        className: "bg-steel-900 border-steel-400 text-blue-400",
+      },
+    ],
+    img: {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/project4-uG9wUxsxP0qziTDfaJU3MG0Og7EnOr.png",
+      alt: "Wolfy Discord Bot Dashboard",
+    },
+    extras_className: {
+      container: "border border-slate-200 dark:border-zinc-700 h-full",
+      btnDemo: "bg-indigo-500 hover:bg-indigo-700 text-white",
+      btnCode: "",
+      cardWrapper: "", // default (doesn't span)
+    },
+  },
+  {
+    title: "Ticket System",
+    description:
+      "A robust support ticketing system with user-friendly interface and admin controls built with Node.js and MongoDB.",
+    demo_url: "https://tickets-app-beryl.vercel.app/",
+    code_url: "https://github.com/iyousefosama/tickets-app",
+    badges: [
+      {
+        title: "Node.js",
+        className: "bg-steel-900 border-steel-400 text-green-300",
+      },
+      {
+        title: "MongoDB",
+        className: "bg-blue-800/30 border-steel-400 text-green-600",
+      },
+    ],
+    img: {
+      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/project5-J7XTFvA2wQlPx6OQvj80LV6jGFj0Xf.png",
+      alt: "Ticket Management System",
+    },
+    extras_className: {
+      container: "border border-slate-200 dark:border-zinc-700 h-full",
+      btnDemo: "bg-zinc-600 hover:bg-zinc-700 text-white",
+      btnCode: "",
+      cardWrapper: "", // default (no col-span)
+    },
   },
 ];
 
@@ -151,7 +221,8 @@ const techStackIcons: TechStackIcon[] = [
 
 const expCards: ExpCard[] = [
   {
-    review: "Yousef osama created a clean and powerful dashboard for managing Discord servers. His attention to detail and user-focused design really makes things easy to use.",
+    review:
+      "Yousef osama created a clean and powerful dashboard for managing Discord servers. His attention to detail and user-focused design really makes things easy to use.",
     imgPath: "/images/logos/wolfy.jpg",
     logoPath: "/images/logos/react.png",
     iconType: "react",
@@ -162,10 +233,18 @@ const expCards: ExpCard[] = [
       "Integrated Discord OAuth2 for secure user authentication.",
       "Implemented dynamic guild settings, embed builders, and live data syncing with WebSockets.",
     ],
-    technologies: ["Next.js", "Express.js", "MongoDB", "TailwindCSS", "Discord OAuth2", "WebSockets"],
+    technologies: [
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "TailwindCSS",
+      "Discord OAuth2",
+      "WebSockets",
+    ],
   },
   {
-    review: "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It's fast, clean, and shows a great understanding of full-stack concepts.",
+    review:
+      "Tomados is a simple yet effective Todos app built by Yousef and a teammate. It's fast, clean, and shows a great understanding of full-stack concepts.",
     imgPath: "/images/logos/tomados-logo.png",
     logoPath: "/images/logos/node.png",
     iconType: "nodejs",
@@ -176,10 +255,17 @@ const expCards: ExpCard[] = [
       "Used React Query for efficient state and server-side data management.",
       "Implemented GitHub OAuth login and dynamic user-based data storage.",
     ],
-    technologies: ["Next.js", "MongoDB", "TypeScript", "React Query", "GitHub OAuth"],
+    technologies: [
+      "Next.js",
+      "MongoDB",
+      "TypeScript",
+      "React Query",
+      "GitHub OAuth",
+    ],
   },
   {
-    review: "Yousef isn't limited to just web development — he constantly pushes himself by learning new tech stacks, building games, desktop apps, and exploring creative ideas beyond the browser.",
+    review:
+      "Yousef isn't limited to just web development — he constantly pushes himself by learning new tech stacks, building games, desktop apps, and exploring creative ideas beyond the browser.",
     imgPath: "/images/ok.png",
     logoPath: "/images/logos/git.svg",
     iconType: "git",
@@ -190,8 +276,18 @@ const expCards: ExpCard[] = [
       "Built cross-platform desktop applications using Electron combined with React and TailwindCSS.",
       "Always learning — exploring C++, Java, and Python to expand skillset and apply them in real-world creative projects.",
     ],
-    technologies: ["Unity", "JavaScript", "Phaser", "Electron", "React", "TailwindCSS", "C++", "Java", "Python"],
-  }
+    technologies: [
+      "Unity",
+      "JavaScript",
+      "Phaser",
+      "Electron",
+      "React",
+      "TailwindCSS",
+      "C++",
+      "Java",
+      "Python",
+    ],
+  },
 ];
 
 const expLogos: Logo[] = [
@@ -222,10 +318,11 @@ export {
   words,
   abilities,
   counterItems,
+  projects,
   expCards,
   expLogos,
   social,
   techStackIcons,
   techStackImgs,
   navLinks,
-}; 
+};

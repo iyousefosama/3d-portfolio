@@ -55,7 +55,7 @@ const GlowCard: React.FC<GlowCardProps> = ({ card, index, children }) => {
             angle = (angle + 360) % 360;
 
             card.style.setProperty("--start", `${angle + 60}`);
-        }, 10); // 10ms debounce
+        }, 10);
     };
 
     return (

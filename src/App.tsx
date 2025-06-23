@@ -18,20 +18,20 @@ const Loading = () => (
 );
 
 const App: React.FC = () => {
-    return (
-        <>
-            <Navbar />
-            <Hero />
-            <Suspense fallback={<Loading />}>
-                <Showcase />
-                <FeatureCards />
-                <ExperienceSection />
-                <TechStack />
-                <Contact />
-                <Footer />
-            </Suspense>
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <Suspense fallback={<Loading />}>
+        <Showcase />
+        <FeatureCards />
+        <ExperienceSection />
+        <TechStack />
+        <Contact />
+        <Footer />
+      </Suspense>
+    </>
+  );
 }
 
 export default App; 
