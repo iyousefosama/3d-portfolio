@@ -38,7 +38,7 @@ const TechStack: React.FC = () => {
   }, [isInView, controls])
 
   return (
-    <section ref={sectionRef} id="skills" className="flex-center section-padding padding-x-lg">
+    <section ref={sectionRef} id="skills" className="flex-center py-20 padding-x-lg">
       <div className="w-full h-full md:px-10 px-5">
         <motion.div
           className="text-center mb-16"

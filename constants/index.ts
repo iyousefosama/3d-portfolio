@@ -227,20 +227,13 @@ const expCards: ExpCard[] = [
     logoPath: "/images/logos/react.png",
     iconType: "react",
     title: "Full Stack Developer – Wolfy Bot Dashboard",
-    date: "Jan 2024 – Present",
+    date: "Jan 2023 – Present",
     responsibilities: [
       "Designed and built a full-stack dashboard using Next.js, Express.js, MongoDB, and TailwindCSS.",
       "Integrated Discord OAuth2 for secure user authentication.",
       "Implemented dynamic guild settings, embed builders, and live data syncing with WebSockets.",
     ],
-    technologies: [
-      "Next.js",
-      "Express.js",
-      "MongoDB",
-      "TailwindCSS",
-      "Discord OAuth2",
-      "WebSockets",
-    ],
+    technologies: ["Next.js", "MongoDB", "TailwindCSS", "Discord OAuth2"],
   },
   {
     review:
@@ -249,19 +242,14 @@ const expCards: ExpCard[] = [
     logoPath: "/images/logos/node.png",
     iconType: "nodejs",
     title: "Full Stack Developer – Tomados Todos App",
-    date: "May 2024 – Present",
+    date: "May 2025 – Present",
     responsibilities: [
-      "Built a collaborative Todos app with Next.js (App Router), MongoDB, and TypeScript.",
-      "Used React Query for efficient state and server-side data management.",
-      "Implemented GitHub OAuth login and dynamic user-based data storage.",
+      "Created a real-time Todo application with multi-user support using Next.js and MongoDB.",
+      "Used TypeScript to build a scalable and type-safe front-end architecture with dynamic routing.",
+      "Implemented Next OAuth for seamless authentication and user-specific data storage.",
+      "Focused on intuitive user experience with responsive layout and clean UI design.",
     ],
-    technologies: [
-      "Next.js",
-      "MongoDB",
-      "TypeScript",
-      "React Query",
-      "GitHub OAuth",
-    ],
+    technologies: ["Next.js", "MongoDB", "TypeScript", "Next OAuth"],
   },
   {
     review:
@@ -270,7 +258,7 @@ const expCards: ExpCard[] = [
     logoPath: "/images/logos/git.svg",
     iconType: "git",
     title: "Versatile Developer – Games & Desktop Apps",
-    date: "2023 – Present",
+    date: "2020 – Present",
     responsibilities: [
       "Experimented with game development using Unity and JavaScript-based engines like Phaser.",
       "Built cross-platform desktop applications using Electron combined with React and TailwindCSS.",
@@ -279,7 +267,7 @@ const expCards: ExpCard[] = [
     technologies: [
       "Unity",
       "JavaScript",
-      "Phaser",
+      "Godot",
       "Electron",
       "React",
       "TailwindCSS",
