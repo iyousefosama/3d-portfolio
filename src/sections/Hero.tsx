@@ -117,7 +117,7 @@ const Hero: React.FC = () => {
                             variants={itemVariants}
                             className="text-sm md:text-xl leading-relaxed max-w-2xl relative z-10 pointer-events-none text-white-50"
                         >
-                            <span className="bg-black/50 backdrop-blur-sm rounded px-2">
+                            <span className="bg-black/50 backdrop-blur-sm rounded">
                                 Passionate full-stack developer specializing in modern web technologies. I transform complex challenges
                                 into elegant, scalable solutions that drive business growth.
                             </span>
