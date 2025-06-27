@@ -1,8 +1,11 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, AdaptiveDpr, AdaptiveEvents, Preload } from '@react-three/drei';
+import { OrbitControls, AdaptiveDpr, AdaptiveEvents, Preload, Html } from '@react-three/drei';
 import { useMediaQuery } from 'react-responsive';
 import { SpaceBoi } from './SpaceBoi';
 import { useMemo } from "react";
+import ModelErrorBoundary from "./ModelErrorBoundary";
+import React, { Suspense } from "react";
+import Loading from "@/components/Loading";
 
 interface CameraSettings {
     position: [number, number, number];
@@ -93,7 +96,11 @@ const HeroExperience: React.FC = () => {
                         position={[0, -1.5, 0]}
                         rotation={[0, -Math.PI / 4, -0.1]}
                     >
-                        <SpaceBoi />
+                        <ModelErrorBoundary>
+                            <Suspense fallback={<Html center><Loading /></Html>}>
+                                <SpaceBoi />
+                            </Suspense>
+                        </ModelErrorBoundary>
                     </group>
 
                 {/* Preload assets to prevent jank when they first appear */}
