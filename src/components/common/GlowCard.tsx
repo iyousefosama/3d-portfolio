@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import { debounce } from "../lib/utils";
+import { debounce } from "../../lib/utils";
 
 interface ExpCard {
     review: string;

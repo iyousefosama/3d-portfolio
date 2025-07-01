@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { navLinks } from "../../constants/index";
+import { navLinks } from "../../../constants/index";
 import { motion, AnimatePresence, type Variant } from "framer-motion";
 import { useRef } from "react";
 
 
 import { MenuIcon, XIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const Navbar: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState<boolean>(false);

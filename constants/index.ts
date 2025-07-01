@@ -1,4 +1,5 @@
-import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Code2, Lightbulb, Palette, Sparkles, SmilePlus } from "lucide-react";
 import {
   NavLink,
@@ -292,7 +293,7 @@ const social: Social[] = [
   },
   {
     name: "x",
-    icon: FaTwitter,
+    icon: FaXTwitter,
     link: "https://x.com/iiyousefosama",
   },
   {

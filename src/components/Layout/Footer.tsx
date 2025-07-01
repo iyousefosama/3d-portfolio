@@ -1,4 +1,4 @@
-import { social } from "../../constants";
+import { social } from "../../../constants";
 import SocialButton from "@/components/custom/SocialButton.tsx";
 import React from "react";
 

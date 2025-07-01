@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { counterItems } from "../../constants";
+import { counterItems } from "../../../constants";
 import { motion, useInView, animate } from "framer-motion";
 
 const AnimatedCounter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {

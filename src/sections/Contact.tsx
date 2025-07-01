@@ -1,10 +1,14 @@
 import { useRef, useState, FormEvent, ChangeEvent } from "react";
 import emailjs from "@emailjs/browser";
-import TitleHeader from "../components/TitleHeader";
+import TitleHeader from "../components/common/TitleHeader";
 import Lottie from "lottie-react";
 import contactAnimation from "../assets/animations/contact.json";
+import React from "react";
+import { motion, useAnimation, useInView } from "framer-motion"
+import { sectionTitleVariant } from "../lib/motionVariants";
 
-interface FormData {
+// Rename FormData interface to ContactFormData
+interface ContactFormData {
     name: string;
     email: string;
     message: string;
@@ -12,8 +16,20 @@ interface FormData {
 
 const Contact: React.FC = () => {
     const formRef = useRef<HTMLFormElement>(null);
+    const sectionRef = useRef<HTMLElement>(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+    const controls = useAnimation();
+
+    React.useEffect(() => {
+        if (isInView) {
+            controls.start("visible");
+        } else {
+            controls.start("hidden");
+        }
+    }, [isInView, controls])
+
     const [loading, setLoading] = useState<boolean>(false);
-    const [form, setForm] = useState<FormData>({
+    const [form, setForm] = useState<ContactFormData>({
         name: "",
         email: "",
         message: "",
@@ -48,8 +64,13 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="flex-center py-20 section-padding">
-            <div className="w-full h-full md:px-10 px-5">
+        <section ref={sectionRef} id="contact" className="flex-center py-20 section-padding">
+            <motion.div
+                className="w-full h-full md:px-10 px-5"
+                initial="hidden"
+                animate={controls}
+                variants={sectionTitleVariant}
+            >
                 <TitleHeader
                     title="Get in Touch – Let's Connect"
                     sub="💬 Have questions or ideas? Let's talk! 🚀"
@@ -98,6 +119,7 @@ const Contact: React.FC = () => {
                                         placeholder="How can I help you?"
                                         rows={5}
                                         required
+                                        className="resize-none"
                                     />
                                 </div>
 
@@ -115,7 +137,7 @@ const Contact: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

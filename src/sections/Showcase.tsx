@@ -2,15 +2,11 @@
 
 import React, { useRef } from "react"
 
-import TitleHeader from "@/components/TitleHeader"
+import TitleHeader from "@/components/common/TitleHeader"
 import { motion, useAnimation, useInView } from "framer-motion"
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard from "@/components/custom/ProjectCard";
 import { projects } from "../../constants";
-
-const titleVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-}
+import { sectionTitleVariant } from "../lib/motionVariants";
 
 const Showcase: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null)
@@ -32,7 +28,7 @@ const Showcase: React.FC = () => {
           className="text-center mb-16"
           initial="hidden"
           animate={controls}
-          variants={titleVariants}
+          variants={sectionTitleVariant}
         >
           <TitleHeader
             title="Featured Projects"

@@ -4,10 +4,10 @@ import React from "react"
 import { motion } from "framer-motion"
 import { Sparkles, ChevronDown } from "lucide-react"
 import HeroExperience from "@/components/Models/HeroModels/HeroExperience"
-import Ctabutton from "@/components/Button"
+import Ctabutton from "@/components/custom/Button"
 import { Button } from "@/components/ui/button"
 
-import AnimatedCounters from "@/components/AnimatedCounters"
+import AnimatedCounters from "@/components/custom/AnimatedCounters"
 import { scrollToElementById } from "@/lib/utils"
 import { words } from "../../constants"
 /* import ScrollSection from "@/components/custom/ScrollSection" */

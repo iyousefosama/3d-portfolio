@@ -2,16 +2,11 @@
 
 import React from "react"
 import { useRef } from "react"
-import TitleHeader from "@/components/TitleHeader"
-import ExperienceItem from "@/components/ExperienceItem"
+import TitleHeader from "@/components/common/TitleHeader"
+import ExperienceItem from "@/components/custom/ExperienceItem"
 import { expCards } from "../../constants"
 import { motion, useAnimation, useInView } from "framer-motion"
-
-
-const titleVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-}
+import { sectionTitleVariant } from "../lib/motionVariants"
 
 const ExperienceSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null)
@@ -33,7 +28,7 @@ const ExperienceSection: React.FC = () => {
                     className="text-center mb-16"
                     initial="hidden"
                     animate={controls}
-                    variants={titleVariants}
+                    variants={sectionTitleVariant}
                 >
                     <TitleHeader title="Professional Work Experience" sub="💼 Career Overview" />
                 </motion.div>

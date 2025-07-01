@@ -5,7 +5,7 @@ import { SpaceBoi } from './SpaceBoi';
 import { useMemo } from "react";
 import ModelErrorBoundary from "./ModelErrorBoundary";
 import React, { Suspense } from "react";
-import Loading from "@/components/Loading";
+import Loading from "@/components/common/Loading";
 
 interface CameraSettings {
     position: [number, number, number];

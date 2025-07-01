@@ -1,13 +1,9 @@
 import React, { useRef } from "react";
-import TitleHeader from "../components/TitleHeader";
+import TitleHeader from "../components/common/TitleHeader";
 import { techStackImgs } from "../../constants/index";
 import { motion, useAnimation, useInView } from "framer-motion"
+import { sectionTitleVariant } from "../lib/motionVariants";
 const isMobile = window.innerWidth < 768;
-
-const titleVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-}
 
 const cardVariants = {
   hidden: { opacity: 0, y: isMobile ? 20 : 50 },
@@ -44,7 +40,7 @@ const TechStack: React.FC = () => {
           className="text-center mb-16"
           initial="hidden"
           animate={controls}
-          variants={titleVariants}
+          variants={sectionTitleVariant}
         >
           <TitleHeader
             title="My Strengths & Contributions"
